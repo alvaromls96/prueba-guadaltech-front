@@ -1,0 +1,28 @@
+<mat-card class="page-container">
+  <app-progress-spinner *ngIf="!dataSource"></app-progress-spinner>
+  <table *ngIf="dataSource" mat-table [dataSource]="dataSource">
+    <!-- columns -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let becario"> {{ becario.id }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>NAME</th>
+      <td mat-cell *matCellDef="let becario"> {{ becario.nombre + ' ' + becario.apellidos }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef>ROLE</th>
+      <td mat-cell *matCellDef="let becario"> {{ becario.puesto }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dischargeDate">
+      <th mat-header-cell *matHeaderCellDef>DISCHARGE DATE</th>
+      <td mat-cell *matCellDef="let becario"> {{ becario.fechaalta }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>
